@@ -1,0 +1,148 @@
+.file-upload-container {
+  padding: 20px;
+}
+
+.upload-form {
+  border: 2px dashed#D40000;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.upload-form.drag-active {
+  border-color:#D40000;
+  background: #f0f4ff;
+}
+
+.upload-area {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-prompt {
+  color: #EDF2F4;
+}
+
+.upload-prompt p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.or-text {
+  color: #C0C0C0;
+  font-size: 14px;
+}
+
+.btn-browse {
+  display: inline-block;
+  background:#D40000;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+  margin: 10px 0;
+}
+
+.btn-browse:hover {
+  background: #cf2727;
+}
+
+.supported-types {
+  font-size: 12px;
+  color: #C0C0C0;
+  margin-top: 10px;
+}
+
+.file-selected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-selected p {
+  margin: 5px 0;
+  color: #EDF2F4;
+  font-size: 16px;
+}
+
+.file-size {
+  color: #C0C0C0;
+  font-size: 14px;
+}
+
+.btn-remove {
+  background:#D40000;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-remove:hover {
+  background: #cc0000;
+}
+
+.btn-upload {
+  width: 100%;
+  background: #D40000;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 20px;
+  transition: background 0.3s;
+}
+
+.btn-upload:hover {
+  background: #cf2727;
+}
+
+.btn-upload:disabled {
+  background:#D40000;
+  cursor: not-allowed;
+}
+
+.btn-record,
+.btn-stop-record {
+  background: #D40000;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.btn-record:hover {
+  background: #cf2727;
+}
+
+.btn-stop-record {
+  background: #cc0000;
+}
+
+.btn-stop-record:hover {
+  background: #a30000;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

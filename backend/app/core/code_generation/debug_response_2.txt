@@ -1,0 +1,43 @@
+==============================
+1) GLOBAL LABEL TABLE
+==============================
+Label Name | Data Type | Class | Device Name | Initial Value | Constant | English | Remark
+StartPB | Bit | VAR_GLOBAL | X0 | FALSE | FALSE | Start Push Button Input |
+SafetyOK | Bit | VAR_GLOBAL | M0 | FALSE | FALSE | Overall Safety Interlock Status |
+ConveyorMotorRun | Bit | VAR_GLOBAL | Y0 | FALSE | FALSE | Conveyor Motor Output |
+
+==============================
+2) PROGRAM BLOCKS
+==============================
+----------------------
+PROGRAM BLOCK
+Stage: 2 - Start Sequence
+Program Name: PB_Start_Conveyor
+Execution Type: Scan
+----------------------
+LOCAL LABEL TABLE:
+Label Name | Data Type | Class | Initial Value | Constant | English
+StartCmd | Bit | VAR | FALSE | FALSE | Start Command Signal
+SafetyActive | Bit | VAR | FALSE | FALSE | Safety Interlock Active Status
+
+STRUCTURED TEXT CODE:
+SafetyActive := SafetyOK;
+StartCmd := StartPB;
+
+IF StartCmd AND SafetyActive THEN
+    ConveyorMotorRun := TRUE;
+ELSE
+    ConveyorMotorRun := FALSE;
+END_IF;
+
+==============================
+3) FUNCTIONS
+==============================
+
+==============================
+4) FUNCTION BLOCKS
+==============================
+
+==============================
+5) STRUCTURED DATA TYPE TABLE (ONLY IF REQUIRED)
+==============================

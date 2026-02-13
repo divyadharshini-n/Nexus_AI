@@ -1,0 +1,132 @@
+.safety-manual-upload {
+  background: #fff5e6;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.safety-manual-upload h4 {
+  margin: 0 0 10px 0;
+  color: #000000;
+  font-size: 16px;
+}
+
+.upload-description {
+  color: #000000;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.upload-form-sm {
+  border: 2px dashed#D40000;
+  border-radius: 6px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s;
+  background: white;
+}
+
+.upload-form-sm.drag-active {
+  border-color:#D40000;
+  background: #ffe0f6;
+}
+
+.upload-area-sm {
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-prompt-sm {
+  color: #000000;
+}
+
+.upload-prompt-sm p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.or-text-sm {
+  color: #000000;
+  font-size: 12px;
+}
+
+.btn-browse-sm {
+  display: inline-block;
+  background:#D40000;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+  margin: 8px 0;
+  font-size: 13px;
+}
+
+.btn-browse-sm:hover {
+  background: #c03535;
+}
+
+.supported-types-sm {
+  font-size: 11px;
+  color: #000000;
+  margin-top: 8px;
+}
+
+.file-selected-sm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.file-selected-sm p {
+  margin: 4px 0;
+  color: #1100ff;
+  font-size: 14px;
+}
+
+.file-size-sm {
+  color: #4000ff;
+  font-size: 12px;
+}
+
+.btn-remove-sm {
+  background:#D40000;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn-remove-sm:hover {
+  background: #cc0000;
+}
+
+.btn-upload-sm {
+  width: 100%;
+  background:#D40000;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 15px;
+  transition: background 0.3s;
+}
+
+.btn-upload-sm:hover {
+  background: #eb4747;
+}
+
+.btn-upload-sm:disabled {
+  background: #b42323;
+  cursor: not-allowed;
+}

@@ -1,0 +1,64 @@
+==============================
+1) GLOBAL LABEL TABLE
+==============================
+Label Name | Data Type | Class | Device Name | Initial Value | Constant | English | Remark
+ProductSensor1 | Bit | VAR_GLOBAL | X0 | FALSE | FALSE | Product Sensor 1 Input |
+ProductSensor2 | Bit | VAR_GLOBAL | X1 | FALSE | FALSE | Product Sensor 2 Input |
+ProductDetected | Bit | VAR_GLOBAL | M100 | FALSE | FALSE | Internal flag for product detection signal |
+ProductCount | Word | VAR_GLOBAL | D100 | 0 | FALSE | Total product count register |
+CountEnable | Bit | VAR_GLOBAL | M101 | FALSE | FALSE | Control signal to enable counting |
+
+==============================
+2) PROGRAM BLOCKS
+==============================
+PROGRAM BLOCK
+Stage: 3 - Product Counting
+Program Name: PB_ProductCounting
+Execution Type: Scan
+----------------------
+LOCAL LABEL TABLE:
+Label Name | Data Type | Class | Initial Value | Constant | English
+SensorActive | Bit | VAR | FALSE | FALSE | Temporary flag for any sensor active
+CountPulse | Bit | VAR | FALSE | FALSE | Rising edge pulse for counting
+
+STRUCTURED TEXT CODE:
+(* Check if any product sensor is active *)
+SensorActive := ProductSensor1 OR ProductSensor2;
+
+(* Generate a one-shot pulse when product detection starts *)
+R_TRIG_1(CLK:=SensorActive, Q:=CountPulse);
+
+(* Increment counter if enabled and pulse is present *)
+IF CountEnable AND CountPulse THEN
+    ProductCount := ProductCount + 1;
+END_IF;
+
+(* Set detection flag for monitoring/diagnostics *)
+ProductDetected := SensorActive;
+
+==============================
+3) FUNCTIONS
+==============================
+
+==============================
+4) FUNCTION BLOCKS
+==============================
+FUNCTION BLOCK
+Stage: 3 - Product Counting
+Function Block Name: R_TRIG_1
+Function Block Type: Subroutine Type
+With EN or Without EN: Without EN
+----------------------
+LOCAL LABEL TABLE:
+Label Name | Data Type | Class | Initial Value | Constant | English
+CLK | Bit | VAR_INPUT | FALSE | FALSE | Input signal for edge detection
+Q | Bit | VAR_OUTPUT | FALSE | FALSE | Output pulse (one scan)
+prev_CLK | Bit | VAR | FALSE | FALSE | Previous scan state of CLK
+
+STRUCTURED TEXT CODE:
+Q := CLK AND NOT prev_CLK;
+prev_CLK := CLK;
+
+==============================
+5) STRUCTURED DATA TYPE TABLE (ONLY IF REQUIRED)
+==============================

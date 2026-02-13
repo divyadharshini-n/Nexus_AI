@@ -1,0 +1,89 @@
+==============================
+1) GLOBAL LABEL TABLE
+==============================
+Label Name | Data Type | Class | Device Name | Initial Value | Constant | English | Remark
+BeltRunTime | TIME | VAR_GLOBAL | D0 | T#0s | FALSE | Belt Run Time Accumulator | Accumulates continuous run time
+CoolDownTimeLimit | TIME | VAR_GLOBAL | D1 | T#60s | FALSE | Cool Down Time Limit | 60 seconds limit for continuous run
+StartCoolDown | BIT | VAR_GLOBAL | M0 | FALSE | FALSE | Initiate Cool Down Sequence | Output signal to start cool down
+BeltRunning | BIT | VAR_GLOBAL | M1 | FALSE | FALSE | Belt Status Input | Input indicating belt is running
+
+==============================
+2) PROGRAM BLOCKS
+==============================
+PROGRAM BLOCK
+Stage: 4 - Timed Operation Check
+Program Name: PB_TimedRunMonitor
+Execution Type: Scan
+----------------------
+LOCAL LABEL TABLE:
+Label Name | Data Type | Class | Initial Value | Constant | English
+RunTimeAccumulator | TIME | VAR | T#0s | FALSE | Local Accumulator for Run Time
+TimeLimit | TIME | VAR | T#0s | FALSE | Local Time Limit Value
+BeltActive | BIT | VAR_INPUT | FALSE | FALSE | Local Belt Running Status
+CoolDownActive | BIT | VAR_OUTPUT | FALSE | FALSE | Local Cool Down Start Signal
+
+STRUCTURED TEXT CODE:
+(* Check if the belt is running *)
+IF BeltActive THEN
+    (* Accumulate time if running *)
+    RunTimeAccumulator := RunTimeAccumulator + T#10ms;
+ELSE
+    (* Reset accumulator if belt stops *)
+    RunTimeAccumulator := T#0s;
+END_IF;
+
+(* Check against the limit *)
+IF RunTimeAccumulator > TimeLimit THEN
+    CoolDownActive := TRUE;
+ELSE
+    CoolDownActive := FALSE;
+END_IF;
+
+(* Map local variables to global outputs/inputs *)
+StartCoolDown := CoolDownActive;
+// Assuming BeltRunning is read from input X in a higher level block, 
+// but for this block's logic flow, we use the local input mapped from global M1
+// For simplicity in this block, we map the global input status to the local input variable
+BeltActive := BeltRunning;
+
+==============================
+3) FUNCTIONS
+==============================
+
+==============================
+4) FUNCTION BLOCKS
+==============================
+FUNCTION BLOCK
+Stage: 4 - Timed Operation Check
+Function Block Name: FB_TimeAccumulator
+Function Block Type: Subroutine Type
+With EN or Without EN: Without EN
+----------------------
+LOCAL LABEL TABLE:
+Label Name | Data Type | Class | Initial Value | Constant | English
+InputRun | BIT | VAR_INPUT | FALSE | FALSE | Input signal indicating run condition
+TimeLimit | TIME | VAR_INPUT | T#0s | FALSE | Time limit threshold
+AccumulatedTime | TIME | VAR_RETAIN | T#0s | FALSE | Retained accumulated time
+OutputExceeded | BIT | VAR_OUTPUT | FALSE | FALSE | Output when time is exceeded
+EN_FB | BIT | VAR | FALSE | FALSE | Execution Enable (Internal use for logic flow)
+
+STRUCTURED TEXT CODE:
+(* Use R_TRIG_1 for edge detection if needed, but simple accumulation is sufficient here *)
+
+(* Accumulate time *)
+IF InputRun THEN
+    AccumulatedTime := AccumulatedTime + T#10ms;
+ELSE
+    AccumulatedTime := T#0s;
+END_IF;
+
+(* Check limit *)
+IF AccumulatedTime >= TimeLimit THEN
+    OutputExceeded := TRUE;
+ELSE
+    OutputExceeded := FALSE;
+END_IF;
+
+==============================
+5) STRUCTURED DATA TYPE TABLE (ONLY IF REQUIRED)
+==============================

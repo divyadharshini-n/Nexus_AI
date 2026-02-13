@@ -1,0 +1,248 @@
+.global-header {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  transition: all 0.3s ease;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.manuals-dropdown {
+  position: relative;
+}
+
+.btn-view-manuals {
+  background: #D40000;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 0 20px;
+  height: 40px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-view-manuals:hover {
+  background: #cf2727;
+  border-color: #C80018;
+  transform: translateY(-2px);
+}
+
+.dropdown-arrow {
+  font-size: 10px;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.manuals-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  min-width: 320px;
+  max-width: 400px;
+  max-height: 500px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: background 0.3s ease;
+}
+
+.manuals-dropdown-header {
+  padding: 12px 16px;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text-tertiary);
+  border-bottom: 1px solid var(--border-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.manual-item {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.manual-item:last-child {
+  border-bottom: none;
+}
+
+.manual-item:hover {
+  background: #3B3E43;
+}
+
+.manual-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.manual-name {
+  color: #EDF2F4;
+  font-size: 14px;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #D40000;
+  border-radius: 4px;
+  border: 1px solid #5B5E63;
+}
+
+.user-name {
+  color: #eef4ed;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.admin-badge {
+  background:#D40000;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-logout {
+  background:#D40000;
+  color: #FFFFFF;
+  border: none;
+  padding: 0 20px;
+  height: 40px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-logout:hover {
+  background: #FF0000;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  padding: 6px 12px;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: var(--card-bg);
+}
+
+.theme-toggle.dark {
+  background: #000000;
+  color: #FFFFFF;
+  border-color: #5B5E63;
+}
+
+.theme-toggle.dark:hover {
+  background: #1a1a1a;
+  border-color: #7B7E83;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.theme-toggle.light {
+  background: #FFFFFF;
+  color: #000000;
+  border-color: #C0C0C0;
+}
+
+.theme-toggle.light:hover {
+  background: #F5F5F5;
+  border-color: #999999;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.theme-toggle .toggle-icon {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .toggle-icon {
+  transform: rotate(20deg);
+}
+
+.theme-toggle .toggle-label {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Scrollbar for dropdown */
+.manuals-dropdown-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.manuals-dropdown-menu::-webkit-scrollbar-track {
+  background: #3B3E43;
+  border-radius: 4px;
+}
+
+.manuals-dropdown-menu::-webkit-scrollbar-thumb {
+  background: #5B5E63;
+  border-radius: 4px;
+}
+
+.manuals-dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background: #6B6E73;
+}

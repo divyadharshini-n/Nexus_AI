@@ -1,0 +1,154 @@
+.stage-editor {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: background 0.3s ease;
+}
+
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: 10px;
+  transition: border-color 0.3s ease;
+}
+
+.editor-header > div:first-child {
+  flex: 1;
+}
+
+.editor-header h3 {
+  margin: 0 0 5px 0;
+  color: var(--text-primary);
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.editor-info {
+  color: var(--text-secondary);
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.editor-actions-top {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.editor-body {
+  margin-bottom: 15px;
+}
+
+.logic-editor {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+  transition: all 0.3s ease;
+  background: var(--input-bg);
+  color: var(--text-primary);
+}
+
+.logic-editor.auto-resize {
+  min-height: 120px;
+  resize: none;
+  overflow-y: hidden;
+}
+
+.logic-editor:focus {
+  outline: none;
+  border-color: #D40000;
+}
+
+.word-count {
+  text-align: right;
+  color: var(--text-tertiary);
+  font-size: 13px;
+  margin-top: 5px;
+  transition: color 0.3s ease;
+}
+
+.editor-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-cancel {
+  background: #e0e0e0;
+  color: #EDF2F4;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.btn-cancel:hover {
+  background: #d0d0d0;
+}
+
+.btn-save {
+  background: #434449;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.btn-save:hover {
+  background: #b52020;
+}
+
+.btn-save:disabled {
+  background: #be1e1e;
+  cursor: not-allowed;
+}
+
+.btn-version-history {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: rgb(121, 6, 253);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-version-history:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-version-history:disabled {
+  background: linear-gradient(135deg, #c13e3e 0%, #e21919 100%);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-version-history:active {
+  transform: translateY(0);
+}

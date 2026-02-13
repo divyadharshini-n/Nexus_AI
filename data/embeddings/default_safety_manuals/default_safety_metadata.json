@@ -1,0 +1,16 @@
+{
+  "total_chunks": 530,
+  "total_manuals": 9,
+  "manual_sources": [
+    "61508-2.pdf",
+    "61508-3.pdf",
+    "machinery.pdf",
+    "61508-2.txt",
+    "61508-3.txt",
+    "IEC 61508.txt",
+    "IEC-62061.txt",
+    "ISO-13849-2 (2).txt",
+    "ISO-13849-2.txt"
+  ],
+  "word_count": 132256
+}

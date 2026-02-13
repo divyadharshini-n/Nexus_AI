@@ -1,0 +1,68 @@
+
+
+@router.put("/update", response_model=UpdateCodeResponse)
+async def update_generated_code(
+    request: UpdateCodeRequest,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    """Update generated code and synchronize labels across the project"""
+    # Get stage
+    stage_repo = StageRepository(db)
+    stage = stage_repo.get_by_id(request.stage_id)
+    
+    if not stage:
+        raise HTTPException(status_code=404, detail="Stage not found")
+    
+    # Verify ownership
+    project_repo = ProjectRepository(db)
+    project = project_repo.get_by_id(stage.project_id)
+    
+    if not project or project.owner_id != current_user.id:
+        raise HTTPException(status_code=403, detail="Not authorized")
+    
+    # Get existing code
+    code_repo = CodeRepository(db)
+    code = code_repo.get_by_stage(request.stage_id)
+    
+    if not code:
+        raise HTTPException(status_code=404, detail="No generated code found")
+    
+    try:
+        # Update the code in database
+        code.program_body = request.program_body
+        if request.global_labels:
+            code.global_labels = request.global_labels
+        if request.local_labels:
+            code.local_labels = request.local_labels
+        db.commit()
+        db.refresh(code)
+        
+        # Track version history
+        version_service = VersionHistoryService(db)
+        version_service.create_version_entry(
+            code_id=code.id,
+            stage_id=stage.id,
+            user_id=current_user.id,
+            action_type="edit_code",
+            new_data={
+                "program_body": request.program_body[:200] + "..." if len(request.program_body) > 200 else request.program_body,
+                "global_labels_count": len(code.global_labels),
+                "local_labels_count": len(code.local_labels)
+            },
+            metadata={
+                "description": "Code manually edited"
+            }
+        )
+        
+        return UpdateCodeResponse(
+            success=True,
+            message="Code updated successfully. Labels synchronized across project.",
+            stage_id=stage.id
+        )
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to update code: {str(e)}"
+        )

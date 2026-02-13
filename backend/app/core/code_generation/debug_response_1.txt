@@ -1,0 +1,90 @@
+==============================
+1) GLOBAL LABEL TABLE
+==============================
+Label Name | Data Type | Class | Device Name | Initial Value | Constant | English | Remark
+SafetyGuardOpen | Bit | VAR_GLOBAL | X0 | FALSE | FALSE | Safety Guard Open Input
+EmergencyStop | Bit | VAR_GLOBAL | X1 | FALSE | FALSE | Emergency Stop Button Input
+SystemSafeToRun | Bit | VAR_GLOBAL | M0 | FALSE | FALSE | System is safe to proceed to next stage
+SafetyInterlockActive | Bit | VAR_GLOBAL | M1 | FALSE | FALSE | Safety Interlock Active Flag
+
+==============================
+2) PROGRAM BLOCKS
+==============================
+----------------------
+PROGRAM BLOCK
+Stage: 1 - Safety Check Stage
+Program Name: PB_SafetyMonitor
+Execution Type: Scan
+----------------------
+LOCAL LABEL TABLE:
+Label Name | Data Type | Class | Initial Value | Constant | English
+GuardOpenLatch | Bit | VAR | FALSE | FALSE | Latch for Safety Guard Open status
+EStopLatch | Bit | VAR | FALSE | FALSE | Latch for Emergency Stop status
+
+STRUCTURED TEXT CODE:
+(* Latch inputs for persistence across scan if needed, though for immediate safety checks, direct input monitoring is often preferred. Using direct inputs for immediate action. *)
+
+(* Check Safety Guard Status *)
+SafetyInterlockActive := SafetyGuardOpen OR EmergencyStop;
+
+(* Emergency Stop has highest priority *)
+IF EmergencyStop THEN
+    SystemSafeToRun := FALSE;
+ELSIF SafetyGuardOpen THEN
+    (* Guard is open, system is not safe *)
+    SystemSafeToRun := FALSE;
+ELSE
+    (* Both conditions clear *)
+    SystemSafeToRun := TRUE;
+END_IF;
+
+(* Ensure SafetyInterlockActive reflects any active safety condition *)
+SafetyInterlockActive := SafetyGuardOpen OR EmergencyStop;
+
+==============================
+3) FUNCTIONS
+==============================
+
+==============================
+4) FUNCTION BLOCKS
+==============================
+----------------------
+FUNCTION BLOCK
+Stage: 1 - Safety Check Stage
+Function Block Name: FB_RS_Safety
+Function Block Type: Subroutine Type
+With EN or Without EN: Without EN
+----------------------
+LOCAL LABEL TABLE:
+Label Name | Data Type | Class | Initial Value | Constant | English
+s1 | Bit | VAR_INPUT | FALSE | FALSE | Set Input
+s2 | Bit | VAR_INPUT | FALSE | FALSE | Reset Input
+d | Bit | VAR_OUTPUT | FALSE | FALSE | Output
+
+STRUCTURED TEXT CODE:
+IF s1 AND NOT s2 THEN
+    d := TRUE;
+ELSIF s2 THEN
+    d := FALSE;
+END_IF;
+
+----------------------
+FUNCTION BLOCK
+Stage: 1 - Safety Check Stage
+Function Block Name: FB_R_TRIG
+Function Block Type: Subroutine Type
+With EN or Without EN: Without EN
+----------------------
+LOCAL LABEL TABLE:
+Label Name | Data Type | Class | Initial Value | Constant | English
+CLK | Bit | VAR_INPUT | FALSE | FALSE | Input Signal
+Q | Bit | VAR_OUTPUT | FALSE | FALSE | Output Pulse
+Prev_CLK | Bit | VAR | FALSE | FALSE | Previous Scan Input State
+
+STRUCTURED TEXT CODE:
+Q := CLK AND NOT Prev_CLK;
+Prev_CLK := CLK;
+
+==============================
+5) STRUCTURED DATA TYPE TABLE (ONLY IF REQUIRED)
+==============================

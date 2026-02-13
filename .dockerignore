@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Git
+.git/
+.gitignore
+.github/
+
+# Environment
+.env
+
+# Logs
+logs/
+*.log
+
+# Database
+*.db
+*.sqlite
+
+# Node modules
+node_modules/
+
+# Documentation
+docs/
+*.md
+
+# Test files
+tests/
+*.test.js
+*.spec.js
+pytest.ini
+
+# Build files
+dist/
+build/
+
+# Data and uploads
+data/uploads/
+data/exports/
+data/reports/
+
+# Scripts
+scripts/
+
+# Temporary files
+temp_reports/

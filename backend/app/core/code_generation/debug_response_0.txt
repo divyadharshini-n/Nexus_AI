@@ -1,0 +1,33 @@
+==============================
+1) GLOBAL LABEL TABLE
+==============================
+Label Name | Data Type | Class | Device Name | Initial Value | Constant | English | Remark
+SystemStopPB | Bit | VAR_GLOBAL | X0 | FALSE | FALSE | System Stop Pushbutton Input |
+SystemReady | Bit | VAR_GLOBAL | M0 | FALSE | FALSE | System Ready Flag |
+SystemShutdown | Bit | VAR_GLOBAL | M1 | FALSE | FALSE | System Shutdown Command |
+
+==============================
+2) PROGRAM BLOCKS
+==============================
+----------------------
+PROGRAM BLOCK
+Stage: 0 - Idle Stage
+Program Name: PB_IDLE_001
+Execution Type: Scan
+----------------------
+LOCAL LABEL TABLE:
+Label Name | Data Type | Class | Initial Value | Constant | English
+StopPB_Active | Bit | VAR | FALSE | FALSE | Local copy of Stop PB input
+ShutdownCmd | Bit | VAR | FALSE | FALSE | Local copy of Shutdown Command output
+
+STRUCTURED TEXT CODE:
+(* Check for system stop request *)
+ShutdownCmd := SystemStopPB;
+
+(* If system is not already shutting down, set the shutdown command *)
+IF ShutdownCmd = TRUE THEN
+    SystemShutdown := TRUE;
+END_IF;
+
+(* Ensure system ready is off during shutdown sequence *)
+SystemReady := FALSE;

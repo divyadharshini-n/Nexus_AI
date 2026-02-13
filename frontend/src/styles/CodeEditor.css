@@ -1,0 +1,114 @@
+.code-editor {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: background 0.3s ease;
+}
+
+.code-editor .editor-header {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--border-color);
+  transition: border-color 0.3s ease;
+}
+
+.code-editor .editor-header h3 {
+  margin: 0 0 5px 0;
+  color: var(--text-primary);
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.code-editor .editor-info {
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-style: italic;
+  transition: color 0.3s ease;
+}
+
+.code-editor .editor-actions-top {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.code-editor .editor-body {
+  margin-bottom: 15px;
+}
+
+.code-textarea {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  resize: vertical;
+  transition: all 0.3s ease;
+  background: var(--input-bg);
+  color: var(--text-primary);
+}
+
+.code-textarea:focus {
+  outline: none;
+  border-color: #D40000;
+  background: var(--bg-primary);
+}
+
+.code-textarea.auto-resize {
+  min-height: 200px;
+  resize: none;
+  overflow-y: hidden;
+}
+
+.code-editor .word-count {
+  text-align: right;
+  color: var(--text-tertiary);
+  font-size: 13px;
+  margin-top: 5px;
+  transition: color 0.3s ease;
+}
+
+.code-editor .btn-cancel {
+  background: #D40000;
+  color: var(--text-primary);
+  border: none;
+  padding: 10px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.code-editor .btn-cancel:hover {
+  background: #df443c;
+  transform: translateY(-2px);
+}
+
+.code-editor .btn-save {
+  background: #D40000;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.code-editor .btn-save:hover {
+  background: #df443c;
+  transform: translateY(-2px);
+}
+
+.code-editor .btn-save:disabled {
+  background: var(--bg-secondary);
+  cursor: not-allowed;
+  opacity: 0.5;
+}

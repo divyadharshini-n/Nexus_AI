@@ -1,0 +1,347 @@
+.validation-results {
+  background: rgb(255, 255, 255);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.validation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #000000;
+}
+
+.validation-header h3 {
+  margin: 0;
+  color: #000000;
+  font-size: 18px;
+}
+
+.validation-status {
+  color: rgb(255, 255, 255);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.validation-summary {
+  color: #000000;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Original Issues and Recommendations Section */
+.validation-section {
+  margin-bottom: 24px;
+  background: #4e4b4b;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.validation-section h4 {
+  margin: 0 0 12px 0;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.simple-list {
+  list-style-type: disc;
+  padding-left: 24px;
+  margin: 0;
+}
+
+.simple-list li {
+  margin-bottom: 8px;
+  color: #ffffff;
+  line-height: 1.5;
+}
+
+/* Issues Panel */
+.issues-panel {
+  margin-bottom: 24px;
+  background:#514f4f;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.issues-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.issues-panel-header h4 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.issue-counts {
+  display: flex;
+  gap: 8px;
+}
+
+.count-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.count-badge {
+  background:#d40000;
+  color: white;
+}
+
+.count-badge.moderate {
+  background: #ff8c00;
+  color: white;
+}
+
+.count-badge.optional {
+  background: #000000;
+  color: white;
+}
+
+/* Issue Cards */
+.issues-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.issue-card {
+  background: rgb(255, 255, 255);
+  border-radius: 8px;
+  padding: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.issue-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 2, 2, 0.1);
+}
+
+.issue-header {
+  margin-bottom: 12px;
+}
+
+.issue-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+/* Individual issue items within grouped boxes */
+.issue-item {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.issue-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.issue-item:first-child {
+  padding-top: 8px;
+}
+
+.issue-icon {
+  font-size: 18px;
+}
+
+.issue-severity-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.issue-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #000000;
+  flex: 1;
+}
+
+.issue-severity-description {
+  display: block;
+  font-size: 12px;
+  color: #000000;
+  font-style: italic;
+  margin-left: 26px;
+}
+
+.issue-description {
+  margin-bottom: 12px;
+  padding: 10px;
+  background: #000000;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #EDF2F4;
+  line-height: 1.5;
+}
+
+/* Recommended Logic */
+.recommended-logic {
+  background: #f0f8ff;
+  border: 2px dashed #000000;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.recommended-logic-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.recommended-logic-header strong {
+  color:#000000;
+  font-size: 14px;
+}
+
+.copy-logic-btn {
+  background:#373537;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.copy-logic-btn:hover {
+  background: #000000;
+  transform: scale(1.05);
+}
+
+.copy-logic-btn:active {
+  transform: scale(0.95);
+}
+
+.recommended-logic-content {
+  background: white;
+  padding: 14px;
+  border-radius: 6px;
+  border-left: 4px solid #000000;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #EDF2F4;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.logic-item {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.logic-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.logic-item strong {
+  display: block;
+  color: #000000;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.logic-item p {
+  margin: 0;
+  color: #000000;
+  line-height: 1.6;
+}
+
+.usage-hint {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #000000;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Analysis Summary */
+.validation-analysis {
+  background:#4b494b;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.validation-analysis h4 {
+  margin: 0 0 16px 0;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.analysis-item {
+  margin-bottom: 16px;
+}
+
+.analysis-item:last-child {
+  margin-bottom: 0;
+}
+
+.analysis-item strong {
+  display: block;
+  color: #ffffff;
+  font-size: 13px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.analysis-item p {
+  margin: 0;
+  color: #000000;
+  line-height: 1.6;
+  background: rgb(255, 255, 255);
+  padding: 12px;
+  border-radius: 6px;
+  border-left: 4px solid #000000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .validation-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .issues-panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .recommended-logic-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .copy-logic-btn {
+    width: 100%;
+  }
+}

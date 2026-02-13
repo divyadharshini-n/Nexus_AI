@@ -1,0 +1,150 @@
+/* Home Page Styles - Red, White, Black Theme */
+.home-container {
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+.hero-section {
+  padding: 60px 20px 40px 20px;
+  text-align: center;
+  background: #1a1a1a;
+}
+.nexus-branding {
+  margin-bottom: 40px;
+}
+.nexus-main-title {
+  color: #fff;
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  animation: fadeInDown 1s ease-out;
+}
+.rounded-line {
+  width: 80%;
+  max-width: 1100px;
+  height: 60px;
+  margin: 0 auto;
+  border: 3px solid #fff;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rounded-line-text {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  animation: fadeInDown 1s ease-out;
+}
+.headline {
+  color: #D40000;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  animation: fadeInDown 1s ease-out 0.2s both;
+}
+.subheadline {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+.cta-group {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.cta-btn {
+  padding: 12px 32px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.cta-btn.red {
+  background: #D40000;
+  color: #fff;
+}
+.cta-btn.white {
+  background: #fff;
+  color: #D40000;
+}
+.cta-btn.black {
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
+}
+.supporting-tagline {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-top: 16px;
+}
+.about-section, .problem-section, .impact-section {
+  background: #fff;
+  color: #000;
+  padding: 40px 20px;
+  margin: 0 auto;
+  max-width: 900px;
+  border-radius: 8px;
+  margin-bottom: 32px;
+}
+.challenge-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
+}
+.challenge-card {
+  background: #D40000;
+  color: #fff;
+  padding: 18px 24px;
+  border-radius: 6px;
+  flex: 1 1 250px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.impact-list {
+  color: #D40000;
+  font-size: 1.1rem;
+  margin-left: 24px;
+}
+.login-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.login-btn {
+  background: #D40000;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 16px 48px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: background 0.2s, color 0.2s;
+}
+.login-btn:hover {
+  background: #b30000;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
